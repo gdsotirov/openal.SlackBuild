@@ -1,0 +1,12 @@
+openal: OpenAL (A cros-platform, opensource OpenAL 3D audio API implementation)
+openal:
+openal: OpenAL Soft is an LGPL-licensed, cross-platform, software
+openal: implementation of the OpenAL 3D audio API.
+openal: OpenAL provides capabilities for playing audio in a virtual 3D
+openal: environment. Distance attenuation, doppler shift, and directional sound
+openal: emitters are among the features handled by the API. More advanced
+openal: effects, including air absorption, occlusion, and environmental reverb,
+openal: are available through the EFX extension. It also facilitates streaming
+openal: audio, multi-channel buffers, and audio capture.
+openal:
+openal: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
