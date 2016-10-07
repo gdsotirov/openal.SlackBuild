@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: openal.SlackBuild,v 1.2 2016/10/07 17:48:21 gsotirov Exp $
+# $Id: openal.SlackBuild,v 1.3 2016/10/07 18:00:46 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=openal
-VERSION=1.15.1
+VERSION=1.16.0
 ARCH=${ARCH:-i486}
 BUILD=${BUILD:-1}
 
@@ -58,17 +58,20 @@ fix_source
 # Configure
 cmake -LAH \
       -DCMAKE_C_FLAGS="$SLKCFLAGS" \
+      -DCMAKE_CXX_FLAGS="$SLKCFLAGS" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=${LIBDIRSUFFIX} \
-      -DALSA=ON \
+      -DALSOFT_BACKEND_ALSA=ON \
+      -DALSOFT_BACKEND_OSS=ON \
+      -DALSOFT_BACKEND_PORTAUDIO=ON \
+      -DALSOFT_BACKEND_PULSEAUDIO=ON \
+      -DALSOFT_BACKEND_WAVE=ON \
       -DALSOFT_CONFIG=ON \
-      -DEXAMPLES=ON \
-      -DOSS=ON \
-      -DPORTAUDIO=ON \
-      -DPULSEAUDIO=ON \
-      -DUTILS=ON \
-      -DWAVE=ON \
+      -DALSOFT_EXAMPLES=ON \
+      -DALSOFT_HRTF_DEFS=ON \
+      -DALSOFT_MIDI_FLUIDSYNTH=ON \
+      -DALSOFT_UTILS=ON \
       -DCMAKE_VERBOSE_MAKEFILE=ON || exit 5
 
 # Build & install
