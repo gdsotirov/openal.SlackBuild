@@ -19,14 +19,14 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: openal.SlackBuild,v 1.3 2016/10/07 18:00:46 gsotirov Exp $
+# $Id: openal.SlackBuild,v 1.4 2016/10/07 18:39:04 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=openal
-VERSION=1.16.0
-ARCH=${ARCH:-i486}
+VERSION=1.17.2
+ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
 CWD=${CWD:-`pwd`}
@@ -63,6 +63,7 @@ cmake -LAH \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DLIB_SUFFIX=${LIBDIRSUFFIX} \
       -DALSOFT_BACKEND_ALSA=ON \
+      -DALSOFT_BACKEND_JACK=ON \
       -DALSOFT_BACKEND_OSS=ON \
       -DALSOFT_BACKEND_PORTAUDIO=ON \
       -DALSOFT_BACKEND_PULSEAUDIO=ON \
@@ -70,12 +71,12 @@ cmake -LAH \
       -DALSOFT_CONFIG=ON \
       -DALSOFT_EXAMPLES=ON \
       -DALSOFT_HRTF_DEFS=ON \
-      -DALSOFT_MIDI_FLUIDSYNTH=ON \
+      -DALSOFT_TESTS=ON \
       -DALSOFT_UTILS=ON \
       -DCMAKE_VERBOSE_MAKEFILE=ON || exit 5
 
 # Build & install
-make -j4 || exit 6
+make -j || exit 6
 make DESTDIR=$PKG install || exit 7
 # Manually install config
 install -m 755 -d $PKG/etc/${NAME}/
