@@ -1,4 +1,4 @@
-alsa-lib >= 1.0.26
-ffmpeg >= 1.2.12
-portaudio >= 19.20111121
-pulseaudio >= 4.0
+alsa-lib >= 1.0.27.2
+portaudio >= 19.20140130
+pulseaudio >= 6.0
+qt >= 4.8.7
