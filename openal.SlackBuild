@@ -19,15 +19,15 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: openal.SlackBuild,v 1.1 2016/10/07 11:47:40 gsotirov Exp $
+# $Id: openal.SlackBuild,v 1.2 2016/10/07 17:48:21 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=openal
-VERSION=1.13
-BUILD=${BUILD:-1}
+VERSION=1.15.1
 ARCH=${ARCH:-i486}
+BUILD=${BUILD:-1}
 
 CWD=${CWD:-`pwd`}
 TMP=${TMP:-/tmp}
@@ -60,8 +60,10 @@ cmake -LAH \
       -DCMAKE_C_FLAGS="$SLKCFLAGS" \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
+      -DLIB_SUFFIX=${LIBDIRSUFFIX} \
       -DALSA=ON \
       -DALSOFT_CONFIG=ON \
+      -DEXAMPLES=ON \
       -DOSS=ON \
       -DPORTAUDIO=ON \
       -DPULSEAUDIO=ON \
@@ -72,12 +74,9 @@ cmake -LAH \
 # Build & install
 make -j4 || exit 6
 make DESTDIR=$PKG install || exit 7
-# Move libs in the right place for 64 bits
-if [ "${LIBDIRSUFFIX}" != "" ]; then
-  mv $PKG/usr/lib $PKG/usr/lib64
-fi
-# Rename config
-( cd $PKG/etc/${NAME}/; mv alsoft.conf alsoft.conf.new )
+# Manually install config
+install -m 755 -d $PKG/etc/${NAME}/
+install -m 644 $SRC/alsoftrc.sample $PKG/etc/${NAME}/alsoft.conf.new
 
 # Prepare
 bin_perms $PKG
