@@ -1,4 +1,5 @@
-alsa-lib >= 1.0.27.2
+alsa-lib >= 1.1.1
+jack >= 1.9.10
 portaudio >= 19.20140130
-pulseaudio >= 6.0
+pulseaudio >= 9.0
 qt >= 4.8.7
