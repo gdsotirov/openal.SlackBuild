@@ -1,0 +1,3 @@
+alsa-lib >= 1.0.24.1
+portaudio >= 19.20111121
+pulseaudio >= 1.1
