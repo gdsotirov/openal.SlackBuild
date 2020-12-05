@@ -9,4 +9,4 @@ openal: effects, including air absorption, occlusion, and environmental reverb,
 openal: are available through the EFX extension. It also facilitates streaming
 openal: audio, multi-channel buffers, and audio capture.
 openal:
-openal: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+openal: Packaged by Georgi D. Sotirov <gdsotirov@gmail.com>
